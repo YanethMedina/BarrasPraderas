@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale">
+        <title>Las Barras Praderas</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="CSS/estilo.css">
+    </head>
+    <body id="contenido">
+        <header id="encabezado">
+            <p>Barras Praderas: Suplementos Alimenticios</p>
+        </header>
+        <section id="seccion">
+            <article id="lateral">
+                <h2>Nuevo Producto</h2>
+                <article id="nuevo">
+                <label>Nombre:</label><br>
+                <input type="text" v-model="nombre"><br>
+                <label>Cantidad:</label><br>
+                <input type="number" v-model="cantidadN"><br>
+                <label>Precio:</label><br>
+                <input type="number" v-model="precio" @keyup.enter="agregar()"><br>
+                <br><button id="btnAgrega" @click="agregar()">Agregar</button>
+                </article>
+            </article>
+            <article>
+                <p id="np">Producto:{{cantProductos}}</p>
+                <table>
+                <tr v-for="(valor, index) in names" @key="index">
+                    <td>
+                    <button @click="valor.cantidad++" :disabled="valor.cantidad==100" id="mas">+</button>
+                    <input id="cajita" v-model="valor.cantidad">
+                    <button @click="valor.cantidad--" :disabled="valor.cantidad==1" id="menos">-</button>
+                </td>
+                        <td>{{valor.nombres}}</td>
+                        <td>${{valor.precios}}</td>
+                        <td>${{valor.cantidad*valor.precios}}</td>
+            </tr></table>
+            </article>
+            <article id="resultados">
+                <p>Subtotal: ${{sub}}</p>
+                <p>Iva: ${{iva}}</p>
+                <p>Total: ${{totalP}}</p>
+            </article>
+    </section>
+        <footer id="pie">
+            <p>Gimnasio "Barras Praderas"</p>
+            <h4> Elaboro: Yaneth Medina</h4>
+    </section>
+    <script src="JS/evj4.js"></script>
+    </body>
+</html>
